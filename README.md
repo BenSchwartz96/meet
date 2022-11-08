@@ -3,31 +3,98 @@
 App for Achievement 4 of the course
 
 
-As a user, I should be able to expand or collapse an event so that I can see or hide its details.
+# **Features**
 
-As a user, I should be able to change the number of events shown at once, so that I can increase or decrease it from 32 based on my preferences. 
+### **FEATURE 1: FILTER EVENTS BY CITY**
 
-As a user, I should be able to see a cached version of the app when not connected to the internet, so that I can access the information I need at any time.
+- **SCENARIO 1: WHEN USER HASN’T SEARCHED FOR A CITY, SHOW UPCOMING EVENTS FROM ALL CITIES**
 
-As a user, I should be able to see a chart of the upcoming number of events in a city, so that I can get useful data about when things will be most active.
+  - `Given` user hasn’t searched for any city
+  - `When` the user opens the app
+  - `Then` the user should see a list of all upcoming events
+
+- **SCENARIO 2: USER SHOULD SEE A LIST OF SUGGESTIONS WHEN THEY SEARCH FOR A CITY**
+
+  - `Given` the main page is open
+  - `When` user starts typing in the city textbox
+  - `Then` the user should see a list of cities (suggestions) that match what they’ve typed
+
+- **SCENARIO 3: USER CAN SELECT A CITY FROM THE SUGGESTED LIST**
+
+  - `Given` the user was typing “Berlin” in the city textbox
+  - `And` the list of suggested cities is showing
+  - `When` the user selects a city (e.g., “Berlin, Germany”) from the list
+  - `Then` their city should be changed to that city (i.e., “Berlin, Germany”)
+  - `And` the user should receive a list of upcoming events in that city
+
+  ***
+
+### **FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS**
+
+- **SCENARIO 1: AN EVENT ELEMENT IS COLLAPSED BY DEFAULT**
+
+  - `Given` app is first loaded
+  - `When` events list is rendered
+  - `Then` each event in the list is collapsed by default
+
+- **SCENARIO 2: USER CAN EXPAND AN EVENT TO SEE ITS DETAILS**
+
+  - `Given` event is rendered
+  - `When` user clicks on the event
+  - `Then` event details are shown
+
+- **SCENARIO 3: USER CAN COLLAPSE AN EVENT TO HIDE ITS DETAILS**
+
+  - `Given` event is rendered
+  - `And` event details are shown
+  - `When` user clicks on the event
+  - `Then` event details are hidden
+
+  ***
+
+### **FEATURE 3: SPECIFY NUMBER OF EVENTS**
+
+- **Scenario 1: WHEN USER HASN'T SPECIFIED A NUMBER, 32 IS THE DEFAULT NUMBER**
+
+  - `Given` user has searched for a city
+  - `When` events list is displayed
+  - `Then` the app will display 32 events by default
+
+- **Scenario 2: USER CAN CHANGE THE NUMBER OF EVENTS THEY WANT TO SEE**
+
+  - `Given` the events list is rendered
+  - `When` the user clicks on an options/settings wheel
+  - `Then` they can change the number of events that will be displayed
+
+  ***
+
+### **FEATURE 4: USE THE APP WHEN OFFLINE**
+
+- **Scenario 1: SHOW CACHED DATA WHEN THERE'S NO INTERNET CONNECTION**
+
+  - `Given` the user has no internet connection
+  - `When` they load the app
+  - `Then` a cached version of the last page they were on is displayed
+
+- **Scenario 2: SHOW ERROR WHEN THE USER CHANGES THE SETTINGS**
+
+  - `Given` the user has no internet connection
+  - `When` they try to load something new (new event, city, etc)
+  - `Then` an error will be displayed
+
+  ***
+
+### **FEATURE 5: DATA VISUALISATION**
+
+- **Scenario 1: SHOW A CHART WITH THE NUMBER OF UPCOMING EVENTS IN EACH CITY**
+
+  - `Given` the user is on the main page of the app
+  - `When` the user clicks on a specific button
+  - `Then` a chart visualising the number of upcoming events in each city will be displayed
 
 
 
-Given user hasn't select an event yet
-When the user selects an event
-Then it expands to show extra details, and can be collapsed again
 
-Given the user hasn't specified a number,
-When they look at a cities events they see 32 events by default,
-Then they can change how many they want to see
-
-Given the user has loaded a page
-When they load the app again without internet
-Then they should see a cached version of the last thing they saw, and get an error if they try to load a new page.
-
-Given the user is looking at a specific city's events,
-When they tap/click a certain element,
-Then they can see a visualised chart of events in that city. 
 
 
 
