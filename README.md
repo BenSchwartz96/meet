@@ -56,15 +56,15 @@ App for Achievement 4 of the course
 
 - **Scenario 1: WHEN USER HASN'T SPECIFIED A NUMBER, 32 IS THE DEFAULT NUMBER**
 
-  - `Given` user has searched for a city
+  - `Given` the user boots up the app
   - `When` events list is displayed
   - `Then` the app will display 32 events by default
 
 - **Scenario 2: USER CAN CHANGE THE NUMBER OF EVENTS THEY WANT TO SEE**
 
   - `Given` the events list is rendered
-  - `When` the user clicks on an options/settings wheel
-  - `Then` they can change the number of events that will be displayed
+  - `When` the user changes the 'number of events' input field
+  - `Then` the number of events rendered in the event list will change accordingly
 
   ***
 
@@ -89,7 +89,7 @@ App for Achievement 4 of the course
 - **Scenario 1: SHOW A CHART WITH THE NUMBER OF UPCOMING EVENTS IN EACH CITY**
 
   - `Given` the user is on the main page of the app
-  - `When` the user clicks on a specific button
+  - `When` the event list is rendered
   - `Then` a chart visualising the number of upcoming events in each city will be displayed
 
 
