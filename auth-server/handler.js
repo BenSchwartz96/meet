@@ -15,7 +15,7 @@ const credentials = {
   token_uri: "https://oauth2.googleapis.com/token",
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
   redirect_uris: ["https://BenSchwartz96.github.io/meet/"],
-  javascript_origins: ["https://BenSchwartz96.github.io", "http://localhost:3000"],
+  javascript_origins: ["https://BenSchwartz96.github.io", "http://localhost:3000", "http://localhost", "http://localhost:8080", "http://127.0.0.1", "http://127.0.0.1:8080"],
 };
 
 const { client_secret, client_id, redirect_uris, calendar_id} = credentials;
@@ -39,6 +39,9 @@ module.exports.getAuthURL = async () => {
     statusCode: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
     },
     body: JSON.stringify({
       authUrl: authUrl,
@@ -58,7 +61,7 @@ module.exports.getAccessToken = async (event) => {
     const code = decodeURIComponent(`${event.pathParameters.code}`);
 
 
-    //Exchange authorization code for access token with a “callback” after the exchange. The callback in this case is an arrow function with the results as parameters: "err" and "token."
+    //Exchange authorization code for access token with a 'callback' after the exchange. The callback in this case is an arrow function with the results as parameters: "err" and "token."
     return new Promise((resolve, reject) => {
 
       oAuth2Client.getToken(code, (err, token) => {
@@ -74,6 +77,9 @@ module.exports.getAccessToken = async (event) => {
         statusCode: 200,
         headers: {
           "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Credentials": true,
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
         },
         body: JSON.stringify(token),
       };
