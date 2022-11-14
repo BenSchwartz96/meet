@@ -11,9 +11,6 @@ provider:
     PROJECT_ID: ${file(config.json):PROJECT_ID}
     CALENDAR_ID: ${file(config.json):CALENDAR_ID}
     
-
-
-
 functions:
   getAuthURL:
     handler: handler.getAuthURL
@@ -24,7 +21,6 @@ functions:
           cors:
             origin: "*"
             allowCredentials: true
-
   getAccessToken:
     handler: handler.getAccessToken
     events:
