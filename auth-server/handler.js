@@ -126,7 +126,7 @@ module.exports.getCalendarEvents = event => {
       }
     );
   })
-  .then((token) => {
+  .then( results => {
     //We respond with OAuth token
     return {
       statusCode: 200,
@@ -147,5 +147,5 @@ module.exports.getCalendarEvents = event => {
       body: JSON.stringify(err),
     };
   });
-}
+};
 
