@@ -54,15 +54,15 @@
 
             getCodeElement.onclick = function () {
                 fetch(getAuthURL)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (json) {
-                    const result = JSON.stringify(json);
-                    const { authUrl } = JSON.parse(result); //gets the value of authUrl
-                    resultElement.innerText = result;       //then adds it to the html      i think?
-                    resultLink.href = authUrl;
-                });
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (json) {
+                        const result = JSON.stringify(json);
+                        const { authUrl } = JSON.parse(result); //gets the value of authUrl
+                        resultElement.innerText = result;       //then adds it to the html      i think?
+                        resultLink.href = authUrl;
+                    });
             };
 
             const codeValue = document.getElementById("code");
@@ -79,12 +79,12 @@
                 }
                 const getTokenRequest = getToken + "/" + code;
                 fetch(getTokenRequest)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (json) {
-                    accessTokenElement.innerText = JSON.stringify(json);
-                });
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (json) {
+                        accessTokenElement.innerText = JSON.stringify(json);
+                    });
             };
 
 
@@ -96,13 +96,13 @@
                 const { access_token } = JSON.parse(accessTokenElement.innerText);
                 const eventRequest = getCalendarEvents + "/" + access_token;
                 fetch(eventRequest)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (json) {
-                    events.innerText = JSON.stringify(json, null, 2);
-                });
-            };
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (json) {
+                        events.innerText = JSON.stringify(json, null, 2);
+                    });
+                };
 
         </script>
     </body>

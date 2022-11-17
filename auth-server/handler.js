@@ -51,12 +51,6 @@ module.exports.getAuthURL = async () => {
 
 module.exports.getAccessToken = async (event) => {
 
-  const oAuth2Client = new google.auth.OAuth2(
-    client_id,
-    client_secret,
-    redirect_uris[0]
-  );
-
     // Decode authorization code extracted from the URL query
     const code = decodeURIComponent(`${event.pathParameters.code}`);
 
@@ -95,15 +89,10 @@ module.exports.getAccessToken = async (event) => {
 };
 
 
-module.exports.getCalendarEvents = event => {
+module.exports.getCalendarEvents = async (event) => {
 
-  const oAuth2Client = new google.auth.OAuth2(
-    client_id,
-    client_secret,
-    redirect_uris[0]
-  );
 
-    // Decode authorization code extracted from the URL query
+    // Decode access token extracted from the URL
     const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
     oAuth2Client.setCredentials({ access_token });
 
