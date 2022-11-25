@@ -36,22 +36,4 @@ describe('<Event /> component', () => {
       expect(EventWrapper.find('.details')).toHaveLength(0);
     });
 
-
-  
-
-
-
-
-
-    //what other tests do we want?
-
-    //should be able to expand details with a button
-    //then hide them by pressing same button
-
-    //make sure these extra details are hidden by default
-
-    //what information should be shown in basic view, and which are extra details?
-    //basic view: summary, location, start datetime
-    //detailled view: also description
-
 });
