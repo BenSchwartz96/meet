@@ -5,7 +5,7 @@ import Event from './Event';
 class EventList extends Component {
   render() {
 
-    const {events} = this.props;        //this will in future have to be passed from app.js, instead of the eventlist test, i think?
+    const {events} = this.props;        
 
     return (
         <ul className="EventList">

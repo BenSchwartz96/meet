@@ -5,6 +5,7 @@ class CitySearch extends Component {
   state = {
     query: '',
     suggestions: [],
+    showSuggestions: undefined
   }
 
   handleInputChanged = (event) => {
@@ -20,8 +21,10 @@ class CitySearch extends Component {
 
   handleItemClicked = (suggestion) => {
     this.setState({
-      query: suggestion
+      query: suggestion,
+      showSuggestions: false
     });
+    this.props.updateEvents(suggestion);
   }
 
   render() {
@@ -32,16 +35,19 @@ class CitySearch extends Component {
             className="city"
             value={this.state.query}
             onChange={this.handleInputChanged}
+            onFocus={() => { this.setState({ showSuggestions: true })} }
           />
-          <ul className="suggestions">
+          <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
             {this.state.suggestions.map((suggestion) => (
               <li 
                 key={suggestion} 
                 onClick={() => this.handleItemClicked(suggestion)}
               >{suggestion}</li>
                 ))}
-              <li key='all'>
-              <b>See all cities</b>
+              <li 
+                key='all'
+                onClick={() => this.handleItemClicked("all")}
+                > <b>See all cities</b>
             </li>
           </ul>
         </div>

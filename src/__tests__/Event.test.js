@@ -28,12 +28,32 @@ describe('<Event /> component', () => {
       expect(EventWrapper.find('.location-time-timezone')).toHaveLength(1);
     });
 
-    test('render button and additional details when you press it and then close it properly', () => {
+    test('details are hidden, show them upon clicking "Show more details" button', () => {
+      EventWrapper.setState({ showDetails: false });
       EventWrapper.find('.details-button').at(0).simulate('click');
       expect(EventWrapper.find('.details')).toHaveLength(1);
       expect(EventWrapper.find('.description')).toHaveLength(1);
+    });
+    
+    test('details are visible, hide them upon clicking "Hide details" button', () => {
+      EventWrapper.setState({ showDetails: true });
       EventWrapper.find('.hide-details-button').at(0).simulate('click');
+      expect(EventWrapper.find('.details')).toHaveLength(0);
+    });
+    
+    test('event details are hidden by default', () => {
+      let showDetailsState = EventWrapper.state('showDetails');
+      expect(showDetailsState).toBe(false);
       expect(EventWrapper.find('.details')).toHaveLength(0);
     });
 
 });
+
+
+
+
+
+
+
+
+

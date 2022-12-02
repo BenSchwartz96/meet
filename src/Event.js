@@ -13,16 +13,9 @@ class Event extends Component {
 
 
   handleDetailsClicked = () => {
-    
-    if (!this.state.showDetails) {
-      this.setState({
-        showDetails: true
-      });
-    } else {
-      this.setState({
-        showDetails: false
-      });
-    }
+    this.setState({
+      showDetails: !this.state.showDetails
+    });
   }
 
 

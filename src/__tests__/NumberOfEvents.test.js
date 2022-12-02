@@ -14,7 +14,7 @@ describe('<NumberOfEvents /> component', () => {
 
 
   test('render correct number of events', () => {
-    expect(NumberOfEventsWrapper.find('.NumberOfEvents')).toHaveLength(1);
+    expect(NumberOfEventsWrapper.find('.numberOfEvents')).toHaveLength(1);
   });
 
   test('number of events is set to 32 by default', () => {
