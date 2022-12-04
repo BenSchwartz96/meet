@@ -50,7 +50,7 @@ class App extends Component {
 
   updateEvents = (location, eventCount) => {
 
-    const { currentEventCount } = this.state;
+    // const { currentEventCount } = this.state;
 
     if (location === null) {
       location = this.state.currentLocation;

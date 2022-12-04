@@ -81,5 +81,16 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
+  //for NumberOfEvents feature
+
+  test('currentEventCount correctly updates when changed in NumberOfEvents component', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const targetNumber = { target: { value : 8}};
+    setEventNumber = NumberOfEventsWrapper.find("numberOfEvents").simulate('change', targetNumber);
+    expect(AppWrapper.state('currentEventCount')).toBe(16);
+    AppWrapper.unmount();
+  });
+
   
 });
