@@ -71,14 +71,15 @@ describe('<App /> integration', () => {
   });
 
   test('get list of all events when user selects "See all cities"', async () => {
-    const AppWrapper = mount(<App />);
-    const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions li');
-    await suggestionItems.at(suggestionItems.length - 1).simulate('click');
     const allEvents = await getEvents();
-    expect(AppWrapper.state('events')).toEqual(allEvents);
+    let savedEvents = JSON.stringify(allEvents);
+    // for some reason. the value of allEvents gets emptied after the simulated click line, so, this Stringfy => parse trick is used to save the value of it
+    const AppWrapper = mount(<App />);
+    const suggestionItems = AppWrapper.find(CitySearch).find(".suggestions li");
+    await suggestionItems.at(suggestionItems.length - 1).simulate("click");
+    expect(AppWrapper.state("events")).toEqual(JSON.parse(savedEvents));
     AppWrapper.unmount();
   });
-
 
   
 });
