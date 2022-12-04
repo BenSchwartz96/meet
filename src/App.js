@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
+import './nprogress.css';
+
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
