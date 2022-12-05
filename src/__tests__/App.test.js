@@ -87,8 +87,8 @@ describe('<App /> integration', () => {
     const AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     const targetNumber = { target: { value : 8}};
-    setEventNumber = NumberOfEventsWrapper.find("numberOfEvents").simulate('change', targetNumber);
-    expect(AppWrapper.state('currentEventCount')).toBe(16);
+    await NumberOfEventsWrapper.find(".number-of-events-input").simulate('change', targetNumber);
+    expect(AppWrapper.state('currentEventCount')).toBe(8);
     AppWrapper.unmount();
   });
 
