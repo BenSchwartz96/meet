@@ -86,11 +86,29 @@ describe('<App /> integration', () => {
   test('currentEventCount correctly updates when changed in NumberOfEvents component', async () => {
     const AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    const targetNumber = { target: { value : 8}};
+    const targetNumber = { target: { value : 1}};
+    await AppWrapper.setState({ currentEventCount: 2})
     await NumberOfEventsWrapper.find(".number-of-events-input").simulate('change', targetNumber);
-    expect(AppWrapper.state('currentEventCount')).toBe(8);
+    expect(AppWrapper.state('currentEventCount')).toBe(1);
     AppWrapper.unmount();
   });
+
+
+  test('changing currentEvenCount correctly updates the number of event elements rendered', async () => {
+    let AppWrapper = await mount(<App />);
+    let EventListWrapper = AppWrapper.find(EventList);
+
+    await AppWrapper.setState({ currentEventCount: 2 });
+    EventListWrapper = await EventListWrapper.update();
+    expect(EventListWrapper.find('.event').length).toBe(2);
+    
+    await AppWrapper.find(NumberOfEvents).find('.number-of-events-input').simulate('change', { target: { value: 1 } });
+    EventListWrapper = await EventListWrapper.update();
+    expect(EventListWrapper.find('.event').length).toBe(1);
+    AppWrapper.unmount();
+  });
+
+
 
   
 });

@@ -19,48 +19,22 @@ class App extends Component {
     currentEventCount: 32
   }
 
-  //  previous version, leaving in currently for comparison. 
-  //
-  // updateEvents = (location, eventCount) => {
-  //   if (location) {
-  //   getEvents().then((events) => {
-  //     const locationEvents = (location === 'all') ?
-  //       events :
-  //       events.filter((event) => event.location === location);
-  //     const updatedEvents = locationEvents.slice(0, this.state.currentEventCount);
-  //     this.setState({
-  //       events: updatedEvents,
-  //       currentLocation: location
-  //     });
-  //   });
-  // } else {
-  //   getEvents().then((events) => {
-  //     const locationEvents = (location === 'all') ?
-  //       events :
-  //       events.filter((event) => event.location === location);
-  //     const updatedEvents = locationEvents.slice(0, eventCount);
-  //     this.setState({
-  //       events: updatedEvents,
-  //       currentEventCount: eventCount
-  //     });
-  //   });
-  //   }
-  // }
-
 
   updateEvents = (location, eventCount) => {
 
-    // const { currentEventCount } = this.state;
-
     if (location === null) {
       location = this.state.currentLocation;
+    }
+
+    if (eventCount === null) {
+      eventCount = this.state.currentEventCount;
     }
 
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
         events.filter((event) => event.location === location);
-      const updatedEvents = locationEvents.slice(0, this.state.currentEventCount);
+      const updatedEvents = locationEvents.slice(0, eventCount);
       this.setState({
         events: updatedEvents,
         currentLocation: location,

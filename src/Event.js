@@ -10,15 +10,11 @@ class Event extends Component {
     showDetails: false,
   };
 
-
-
   handleDetailsClicked = () => {
     this.setState({
       showDetails: !this.state.showDetails
     });
   }
-
-
 
   render() {
     
@@ -56,11 +52,7 @@ class Event extends Component {
           )
         }
 
-
       </div>
-
-
-
     
   )}
 }
