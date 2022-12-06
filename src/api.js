@@ -68,13 +68,13 @@ export const getEvents = async () => {
     const response = await fetch(url)
     const result = await response.json();
 
-    if (result.data) {
-      var locations = extractLocations(result.data.events);
-      localStorage.setItem("lastEvents", JSON.stringify(result.data));
+    if (result) {
+      var locations = extractLocations(result.events);
+      localStorage.setItem("lastEvents", JSON.stringify(result));
       localStorage.setItem("locations", JSON.stringify(locations));
     }
     NProgress.done();
-    return result.data.events;
+    return result.events;
   }
 };
 
@@ -90,7 +90,8 @@ export const getAccessToken = async () => {
     if (!code) {
       const response = await fetch("https://4cojg4f31j.execute-api.eu-north-1.amazonaws.com/dev/api/get-auth-url")
       const results = await response.json();
-      const { authUrl } = results.data;
+      console.log(results);
+      const { authUrl } = results;
       return (window.location.href = authUrl);
     }
     return code && getToken(code);
