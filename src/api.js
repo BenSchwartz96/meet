@@ -106,8 +106,8 @@ export const getAccessToken = async () => {
           return res.json();
         })
 
-      const { authUrl } = results.data;
-      return (window.location.href = authUrl);
+      const { authURL } = results.data;
+      return (window.location.href = authURL);
     }
     return code && getToken(code);
   }
