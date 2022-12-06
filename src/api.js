@@ -12,27 +12,16 @@ import NProgress from 'nprogress';
 
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
-  const { access_token } = await fetch(
-    'https://4cojg4f31j.execute-api.eu-north-1.amazonaws.com/dev/api/token' + '/' + encodeCode
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((error) => error);
-
+  const response = await fetch('https://4cojg4f31j.execute-api.eu-north-1.amazonaws.com/dev/api/token' + '/' + encodeCode)
+  const { access_token } = await response.json();
   access_token && localStorage.setItem("access_token", access_token);
-
   return access_token;
 };
 
 
 const checkToken = async (accessToken) => {
-  const result = await fetch(
-    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
-  )
-    .then((res) => res.json())
-    .catch((error) => error.json());
-
+  const response = await fetch(`https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`)
+  const result = await response.json();
   return result;
 };
 
@@ -76,10 +65,9 @@ export const getEvents = async () => {
     removeQuery();
     const url = 'https://4cojg4f31j.execute-api.eu-north-1.amazonaws.com/dev/api/get-events' + '/' + token;
 
-    const result = await fetch(url)
-      .then((res) => {
-        return res.json();
-      })
+    const response = await fetch(url)
+    const result = await response.json();
+
     if (result.data) {
       var locations = extractLocations(result.data.events);
       localStorage.setItem("lastEvents", JSON.stringify(result.data));
@@ -99,15 +87,11 @@ export const getAccessToken = async () => {
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get("code");
 
-
     if (!code) {
-      const results = await fetch("https://4cojg4f31j.execute-api.eu-north-1.amazonaws.com/dev/api/get-auth-url")
-        .then((res) => {
-          return res.json();
-        })
-
-      const { authURL } = results.data;
-      return (window.location.href = authURL);
+      const response = await fetch("https://4cojg4f31j.execute-api.eu-north-1.amazonaws.com/dev/api/get-auth-url")
+      const results = await response.json();
+      const { authUrl } = results.data;
+      return (window.location.href = authUrl);
     }
     return code && getToken(code);
   }
