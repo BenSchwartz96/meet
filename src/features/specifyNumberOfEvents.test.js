@@ -5,8 +5,7 @@ import { mount, shallow } from 'enzyme';
 import App from '../App';
 import EventList from '../EventList';
 import Event from '../Event';
-import { mockData } from '../mock-data';
-
+import NumberOfEvents from '../NumberOfEvents';
 
 
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
@@ -39,12 +38,14 @@ defineFeature(feature, test => {
     });
 
     when('the user changes the \'number of events\' input field', () => {
-      AppWrapper.setState({ currentEventCount: 15})
+      AppWrapper.setState({ currentEventCount: 2})
+      AppWrapper.find(NumberOfEvents).find('.number-of-events-input').simulate('change', { target: { value: 1 } })
     });
 
     then('the number of events rendered in the event list will change accordingly', () => {
       AppWrapper.update();
-      expect(AppWrapper.state('currentEventCount')).toEqual(15);
+      expect(AppWrapper.find(Event).length).toEqual(1);
+      expect(AppWrapper.state('currentEventCount')).toEqual(1);
     });
   });
 
