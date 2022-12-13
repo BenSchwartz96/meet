@@ -47,6 +47,8 @@ input[type="number"] {
   max-width: 300px;
   margin: auto;
   position: relative;
+  margin-top: 50px;
+  margin-bottom: 70px;
 }
 
 .suggestions {
@@ -118,6 +120,8 @@ input[type="number"] {
   width: 200px;
   margin: 45px auto;
   text-align: center;
+  position: relative;
+  margin-bottom: 80px;
 }
 
 .button-wrapper {
@@ -129,8 +133,15 @@ input[type="number"] {
 }
 
 .Alert {
-  position: fixed;
-  top: 20px;
+  position: absolute;
+}
+
+.CitySearch .Alert {
+  top: -50px;
+}
+
+.numberOfEvents .Alert {
+  top: 65px;
 }
 
 .data-vis-wrapper {
