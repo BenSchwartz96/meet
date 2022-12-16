@@ -60,8 +60,9 @@ export const getEvents = async () => {
 
   if (!navigator.onLine) {
     const data = localStorage.getItem("lastEvents");
+    console.log(data);
     NProgress.done();
-    return data?JSON.parse(data).events:[];
+    return data ? JSON.parse(data).events : [];
   }
 
   const token = await getAccessToken();
@@ -74,6 +75,7 @@ export const getEvents = async () => {
     const result = await response.json();
 
     if (result) {
+      console.log(result);
       var locations = extractLocations(result.events);
       localStorage.setItem("lastEvents", JSON.stringify(result));
       localStorage.setItem("locations", JSON.stringify(locations));
