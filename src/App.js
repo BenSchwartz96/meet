@@ -24,11 +24,8 @@ class App extends Component {
 
   updateEvents = (location, eventCount) => {
 
-    if (!navigator.onLine) {
-      this.setState({
-        infoText: "This page is currently being displayed in offline mode."
-      })
-    }
+    if (!navigator.onLine) this.setState({ infoText: "This page is currently being displayed in offline mode." });
+    else this.setState({ infoText: "" });
 
     if (location === null) {
       location = this.state.currentLocation;
