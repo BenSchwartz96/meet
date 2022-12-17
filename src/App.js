@@ -5,6 +5,7 @@ import './nprogress.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import { OfflineAlert } from './Alert';
 
 import { extractLocations, getEvents } from './api';
 
@@ -16,11 +17,18 @@ class App extends Component {
     events: [],
     locations: [],
     currentLocation: "all",
-    currentEventCount: 32
+    currentEventCount: 32,
+    infoText: "",
   }
 
 
   updateEvents = (location, eventCount) => {
+
+    if (!navigator.onLine) {
+      this.setState({
+        infoText: "This page is currently being displayed in offline mode."
+      })
+    }
 
     if (location === null) {
       location = this.state.currentLocation;
@@ -66,6 +74,7 @@ class App extends Component {
     <div className="App">
       <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
       <NumberOfEvents updateEvents={this.updateEvents}/>
+      <OfflineAlert text={this.state.infoText}/>
       <EventList events={this.state.events}/>
     </div>
   );
