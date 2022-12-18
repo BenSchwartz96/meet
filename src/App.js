@@ -8,6 +8,9 @@ import NumberOfEvents from './NumberOfEvents';
 import { OfflineAlert } from './Alert';
 
 import { extractLocations, getEvents } from './api';
+import WelcomeScreen from './WelcomeScreen';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
+
 
 
 
@@ -19,6 +22,7 @@ class App extends Component {
     currentLocation: "all",
     currentEventCount: 32,
     infoText: "",
+    showWelcomeScreen: undefined,
   }
 
 
@@ -49,30 +53,40 @@ class App extends Component {
   }
 
 
-
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({
-           events: events.slice(0, this.state.currentEventCount), 
-           locations: extractLocations(events)
-          });
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+    if (this.mounted) {
+      this.setState({ events, locations: extractLocations(events) });
+    }
+        });
       }
-    });
-  }
+    }    
+
 
   componentWillUnmount(){
     this.mounted = false;
   }
 
   render() {
+
+    if (this.state.showWelcomeScreen === undefined) return <div className="App" />
+
   return (
     <div className="App">
       <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
       <NumberOfEvents updateEvents={this.updateEvents}/>
       <OfflineAlert text={this.state.infoText}/>
       <EventList events={this.state.events}/>
+
+      <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
+
     </div>
   );
 }}
