@@ -113,7 +113,7 @@ class App extends Component {
         <OfflineAlert text={this.state.infoText}/>
 
         <div className="data-vis-wrapper">
-          <EventGenre events={events}/>
+          <EventGenre events={this.state.events}/>
           <ResponsiveContainer height={400}> 
             <ScatterChart 
               margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
