@@ -149,12 +149,24 @@ input[type="number"] {
   align-items: center;
   flex-direction: column;
 }
+
 .data-vis-wrapper .recharts-responsive-container {
   min-width: 100%;
   display: flex;
 }
+
+
 .recharts-surface {
   overflow: visible;
+}
+
+.pieChart {
+  background-color: #494949;
+  width: 30%;
+}
+
+.scatterChart {
+  width: 70%;
 }
 
 .login-button {
