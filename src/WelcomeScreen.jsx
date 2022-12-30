@@ -23,6 +23,7 @@ function WelcomeScreen(props) {
         </button>
       </div>
     </div>
+    No data is being gathered or shared by this app. For more details, please see our
     <a href="https://BenSchwartz96.github.io/meet/privacy.html" rel="nofollow noopener">
     Privacy policy
     </a>
