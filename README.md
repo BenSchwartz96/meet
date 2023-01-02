@@ -8,14 +8,14 @@ Meet is a progressive web application developed for my portfolio during Achievem
 
 This app is currently awaiting proper google verification. Until this is achieved, there are two ways to access the app.
 
-If you would like to see the live version of the app, linked to the Google Calendar API, you can do so [here.](https://benschwartz96.github.io/meet/) Given that it is not yet properly verified, you would need to choose a google account, click 'advanced' in the bottom left when it tells you the app has not been verified, and choose to continue anyway. 
+If you would like to see the live version of the app, linked to the Google Calendar API, you can do so [here.](https://benschwartz96.github.io/meet/) Given that it is not yet properly verified, you would need to choose a Google account, click 'advanced' in the bottom left when it tells you the app has not been verified, and choose to continue anyway. 
 
 If you would prefer to see a locally hosted version of the app (using only sample data), the easiest way is to clone the repository using the steps below in your terminal.
 
-`git clone https://github.com/BenSchwartz96/meet.git`
-`cd meet`
-`npm install`
-`npm run start`
+- `git clone https://github.com/BenSchwartz96/meet.git`
+- `cd meet`
+- `npm install`
+- `npm run start`
 
 ## Technologies used
 
