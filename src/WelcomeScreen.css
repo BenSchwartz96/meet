@@ -57,12 +57,11 @@
 .btn-text {
   float: right;
   color: #fff;
-  font-size: 14px;
   letter-spacing: 0.2px;
   font-family: "Roboto";
   background-color: #4285f4;
+  padding-left: 14px;
   width: 80%;
-  height: 100%;
   text-align: center;
 }
   
