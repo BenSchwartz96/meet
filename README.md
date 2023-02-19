@@ -2,7 +2,7 @@
 
 ## Project Description 
 
-Meet is a progressive web application developed for my portfolio during Achievement 4 of the CareerFoundry course. It was built using a test driven development approach. Meet uses Google Calendar API data to find information about events in a given area.
+Meet is a progressive web application developed for my portfolio during Achievement 4 of the CareerFoundry course. It was built using a test driven development approach, and uses Google Calendar API data to find information about events in a given area.
 
 ## Try it out
 
