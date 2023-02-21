@@ -6,9 +6,9 @@ Meet is a progressive web application developed for my portfolio during Achievem
 
 ## Try it out
 
-This app is currently awaiting proper google verification. Until this is achieved, there are two ways to access the app.
+This app has not been verified by Google. Until verification is obtained (given that this is a learning project, this may not happen), there are two ways to access the app.
 
-If you would like to see the live version of the app, linked to the Google Calendar API, you can do so [here.](https://benschwartz96.github.io/meet/) Given that it is not yet properly verified, you would need to choose a Google account, click 'advanced' in the bottom left when it tells you the app has not been verified, and choose to continue anyway. 
+If you would like to see the live version of the app, linked to the Google Calendar API, you can do so [here.](https://benschwartz96.github.io/meet/) Given that it is not yet properly verified, you would need to choose a Google account, click 'advanced' in the bottom left when it tells you the app has not been verified, and choose to continue anyway. Do so at your own risk (though you can inspect to code to be assured that there is none).
 
 If you would prefer to see a locally hosted version of the app (using only sample data), the easiest way is to clone the repository using the steps below in your terminal.
 
@@ -17,6 +17,10 @@ If you would prefer to see a locally hosted version of the app (using only sampl
 - `npm install`
 - `npm run start`
 
+If you would like to run tests, then after these steps you can run: `npm run test`
+
+If you would instead only like to briefly see the apps basic function (prior to the addition of charts), see [this video.](https://www.youtube.com/watch?v=BxYCutn1Z3Y)
+
 ## Technologies used
 
 The main technologies, languages, and libraries used in the development of this app include:
@@ -24,8 +28,11 @@ The main technologies, languages, and libraries used in the development of this 
  - Javascript
  - React
  - Recharts
- - AWS
+ - AWS Lambda
  - Google Calendar API
+ - Enzyme
+ - Jest
+ - OAuth2
 
 # **Features**
 
