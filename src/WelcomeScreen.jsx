@@ -6,7 +6,7 @@ function WelcomeScreen(props) {
   <div className="WelcomeScreen">
     <h1>Welcome to the Meet app</h1>
     <h4>
-      Log in to see upcoming events around the world for full-stackdevelopers
+      Log in to see upcoming events around the world for full-stack developers
     </h4>
     <div className="button_cont" align="center">
       <div className="google-btn">

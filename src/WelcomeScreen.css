@@ -5,6 +5,11 @@
   height: 100%;
   top: 0;
   background: white;
+  margin: auto auto;
+}
+
+.WelcomeScreen a {
+  padding-left: 0.4rem;
 }
 
 .login-button {
